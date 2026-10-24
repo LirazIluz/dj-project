@@ -79,7 +79,7 @@ struct PlaylistData {
  * @brief File parser for DJ session configuration and playlist files
  * 
  * This helper class handles parsing of the file formats.
- * Phase 4 note: Playlists are discovered under ./playlists (interactive selection).
+ * Note: Playlists are discovered under ./playlists (interactive selection).
  * The app uses bpm_tolerance and auto_sync settings; default_crossfade_time is ignored
  * for logging/behavior in the instant-transition model.
  */

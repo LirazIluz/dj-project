@@ -5,7 +5,7 @@
 #include <string>
 
 // Service responsible for deck operations and track analysis
-// Phase 4 binding:
+// Binding:
 // - Enforces instant transitions and deck alternation policy.
 // - After loading to a deck: call track.load(); then analyze_beatgrid(); then switch active deck.
 // - The previously active deck becomes finished and is unloaded immediately.
@@ -43,7 +43,6 @@ public:
      * Contract: Synchronize BPM between active deck and given track.
      * - @param track: Pointer to the track to sync with the currently active deck
      * - @brief This function calculates average BPM between active deck and given track, then sets the given track's BPM to the average
-     * - @attention What should be the preconditions of this function? What this method modifies?
      */
     void sync_bpm(const PointerWrapper<AudioTrack>& track) const;
 

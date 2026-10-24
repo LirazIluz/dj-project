@@ -8,10 +8,10 @@
  * Base class for all audio track types in the DJ library system.
  * This class demonstrates virtual functions, Rule of 5, and dynamic memory management.
  * 
- * Phase 4 contracts:
+ * Contracts:
  * - load(): lightweight, format-specific preparation when a track is assigned to a deck;
  *   sets readiness state and may log; does not start playback.
- * - analyze_beatgrid(): runs immediately after load() in this assignment to make BPM
+ * - analyze_beatgrid(): runs immediately after load() to make BPM
  *   available for compatibility checks; results may be cached per instance.
  * - clone(): used at the cache→mixer boundary; mixer always receives a polymorphic clone
  *   and owns it; the cache retains its own copy.
@@ -29,42 +29,27 @@ protected:
 public:
     /**
      * Constructor - initializes basic track information
-     * Students should call this from derived class constructors
+     * Called from derived class constructors
      */
 
     AudioTrack(const std::string& title, const std::vector<std::string>& artists, 
                int duration, int bpm, size_t waveform_samples = 1000);
 
-    // ========== RULE OF 5 - STUDENTS MUST IMPLEMENT ALL OF THESE ==========
+    // ========== RULE OF 5 ==========
 
-    /**
-     * TODO: Implement destructor
-     * HINT: Don't forget to clean up waveform_data!
-     */
+    /** Destructor - frees the waveform buffer */
     virtual ~AudioTrack();
 
-    /**
-     * TODO: Implement copy constructor
-     * HINT: Deep copy the waveform_data array
-     */
+    /** Copy constructor - deep copies the waveform buffer */
     AudioTrack(const AudioTrack& other);
 
-    /**
-     * TODO: Implement copy assignment operator
-     * HINT: Check for self-assignment, clean up existing data, then deep copy
-     */
+    /** Copy assignment - handles self-assignment, frees old data and deep copies */
     AudioTrack& operator=(const AudioTrack& other);
 
-    /**
-     * TODO: Implement move constructor
-     * HINT: Transfer ownership without copying, leave other in valid state
-     */
+    /** Move constructor - takes ownership of the waveform buffer */
     AudioTrack(AudioTrack&& other) noexcept;
 
-    /**
-     * TODO: Implement move assignment operator
-     * HINT: Clean up current data, steal from other, reset other
-     */
+    /** Move assignment - frees old data and takes ownership of other's buffer */
     AudioTrack& operator=(AudioTrack&& other) noexcept;
 
     void copyfrom(const AudioTrack& other);

@@ -6,12 +6,8 @@
 
 /**
  * PointerWrapper - A template class that wraps a raw pointer
- * 
- * This is Phase 3 of the assignment. Students must analyze and implement
- * a complete pointer wrapper class that manages dynamic memory safely.
- * 
- * Refer to the assignment instructions (Phase 3) for detailed guiding questions
- * about resource management, ownership semantics, copy vs move, and interface design.
+ * and manages its memory safely (similar to std::unique_ptr).
+ * Copying is disabled, ownership can only be moved.
  */
 template<typename T>
 class PointerWrapper {
@@ -34,10 +30,6 @@ public:
     /**
      * RAII - ties the allocated data lifetime to an object on the stack
      * Once out of scope - allocated data gets deleted.
-     * 
-     * HINT: What should happen to the wrapped pointer when the wrapper is destroyed?
-     * Think about ownership and resource management.
-     * Is the default destructor sufficient here?
      */
     ~PointerWrapper(){
         delete this->ptr;
@@ -57,11 +49,10 @@ public:
      */
     PointerWrapper& operator=(const PointerWrapper& other) = delete;
 
-    // ========== MOVE OPERATIONS (STUDENTS IMPLEMENT) ==========
+    // ========== MOVE OPERATIONS ==========
 
     /**
      * Move copy constructor - ensures no 2 wrappers point to the same address
-     * What should happen to the source wrapper after the move?
      */
     PointerWrapper(PointerWrapper&& other) noexcept {
         #ifdef DEBUG
@@ -168,7 +159,6 @@ public:
 /**
  * Helper function to create PointerWrapper
  * This is implemented for you as an example
- * Can you figure out when this would be useful in phase 4?
  */
 template<typename T, typename... Args>
 PointerWrapper<T> make_pointer_wrapper(Args&&... args) {
@@ -176,14 +166,9 @@ PointerWrapper<T> make_pointer_wrapper(Args&&... args) {
 }
 
 /**
- * TODO: Implement swap for PointerWrapper
- * HINT: How can you swap two wrapper objects?
- * Why might this be useful?
  */
 template<typename T>
 void swap(PointerWrapper<T>& lhs, PointerWrapper<T>& rhs) noexcept {
-    // TODO: Implement global swap function
-    // HINT: You can use the member swap function
     lhs.swap(rhs);
 }
 

@@ -8,7 +8,7 @@
 #include <string>
 
 // Service responsible for managing the track library and playlists
-// Phase 4 behavior alignment:
+// Behavior:
 // - Load library tracks from config file
 // - Build playlists from track indices referencing the library
 class DJLibraryService {
@@ -35,7 +35,7 @@ public:
     // Returns a reference to the loaded playlist
     Playlist& getPlaylist();
 
-    // Display all playlists in the library (debug aid; optional for Phase 4)
+    // Display all playlists in the library (debug aid)
     void displayLibrary() const;
 
     /**

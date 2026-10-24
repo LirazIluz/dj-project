@@ -12,7 +12,7 @@
  * Separates cache slot management from the larger cache algorithm,
  * following SRP and making the design easier to test and maintain.
  *
- * Phase 4 usage:
+ * Usage:
  * - Each slot holds exactly one cached track instance owned by the controller.
  * - access() updates last_access_time to reflect MRU/LRU policy.
  * - clear() releases ownership; callers log evictions as needed.

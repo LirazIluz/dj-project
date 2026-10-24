@@ -10,7 +10,7 @@
 
 /**
  * @brief DJ Controller Memory Statistics
- * Phase 4: Track how memory is used in the DJ controller simulation
+ * Tracks how memory is used in the DJ controller simulation
  */
 struct ControllerStats {
     size_t tracks_in_controller;      // Tracks currently loaded in controller memory
@@ -100,7 +100,6 @@ public:
 
     const std::string& get_session_name() const { return session_name; }
 
-    // TODO: Add more status and display methods as needed, delegating to services
 
 private:
     // ========== PROVIDED HELPER METHODS (Menu and Config) ==========

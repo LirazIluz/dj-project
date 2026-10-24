@@ -15,8 +15,8 @@
  * This class has one responsibility: implementing efficient LRU caching logic.
  * It's decoupled from file I/O, UI concerns, and mixing operations.
  * 
- * Phase 4 usage contract:
- * - Used by DJControllerService with fixed capacity in this assignment.
+ * Usage contract:
+ * - Used by DJControllerService with fixed capacity.
  * - get() marks entries MRU by updating their access time.
  * - put() inserts as MRU and evicts true LRU when full.
  */

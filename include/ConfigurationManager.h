@@ -7,7 +7,7 @@
  * @brief Configuration Management (Single Responsibility)
  * 
  * Handles application configuration settings from config files.
- * Phase 4 note: For this assignment, the playlists directory is always "./playlists"
+ * Note: the playlists directory is always "./playlists"
  * and cache capacity is fixed to 8 by policy; ConfigurationManager may still parse
  * bpm_tolerance and auto_sync.
  */
