@@ -1,0 +1,23 @@
+# DJ Session Manager configuration
+
+app_name=DJ Session Manager
+version=1.0
+
+# Controller and mixer settings
+controller_cache_size=3
+bpm_tolerance=5
+auto_sync=true
+
+# Library tracks
+# MP3,title,{artist1;artist2},duration_seconds,bpm,bitrate,has_tags
+# WAV,title,{artist1;artist2},duration_seconds,bpm,sample_rate,bit_depth
+library_track_1=MP3,Sunset Lover,{Petit Biscuit},238,120,320,1
+library_track_2=WAV,Midnight City,{M83},244,105,44100,16
+library_track_3=MP3,Strobe,{Deadmau5},637,128,256,1
+library_track_4=WAV,Opus,{Eric Prydz},543,126,48000,24
+library_track_5=MP3,Levels,{Avicii},203,126,320,1
+library_track_6=WAV,One More Time,{Daft Punk},320,123,44100,16
+
+# Playlists: name=track numbers from the library
+warmup=1,2,3
+peak_time=3,4,5,6,4
