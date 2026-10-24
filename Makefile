@@ -1,5 +1,4 @@
-# Makefile for DJ Track Session Manager Assignment
-# C++ Memory Management Assignment - BGU SPL Course
+# Makefile for DJ Track Session Manager
 
 # Compiler and flags
 CXX = g++
@@ -36,7 +35,7 @@ SOURCES = \
 # Object files (placed in bin directory)
 OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BIN_DIR)/%.o,$(SOURCES))
 
-# Phase 4 specific objects
+# Session objects
 PHASE4_OBJECTS = $(BIN_DIR)/DJSession.o $(BIN_DIR)/SessionFileParser.o
 
 # Target executable (placed in bin)
@@ -106,12 +105,6 @@ help:
 	@echo "  install-deps - Install required development tools"
 	@echo "  help         - Show this help message"
 	@echo ""
-	@echo "STUDENT WORKFLOW:"
-	@echo "  1. make debug        # Build with debug information"
-	@echo "  2. make test         # Run the program"
-	@echo "  3. Fix the TODOs in the code"
-	@echo "  4. make test-leaks   # Check with valgrind"
-	@echo "  5. Repeat until no leaks found!"
 
 examination:
 	@echo "This is a placeholder for examination-specific targets."
