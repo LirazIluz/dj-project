@@ -3,7 +3,7 @@
 #include <sstream>
 #include <algorithm>
 
-// ========== PUBLIC METHODS (PROVIDED FOR STUDENTS) ==========
+// ========== PUBLIC METHODS ==========
 
 bool SessionFileParser::parse_config_file(const std::string& config_path, SessionConfig& config) {
     std::ifstream file(config_path);
@@ -86,7 +86,6 @@ bool SessionFileParser::parse_config_file(const std::string& config_path, Sessio
 
 
 std::string SessionFileParser::extract_playlist_name(const std::string& playlist_path) {
-    // TODO: Students implement name extraction
     
     // Find last slash or backslash
     size_t last_slash = playlist_path.find_last_of("/\\");
@@ -99,14 +98,12 @@ std::string SessionFileParser::extract_playlist_name(const std::string& playlist
         filename = filename.substr(0, dot_pos);
     }
     
-    // TODO: Convert underscores to spaces and clean up name
     std::replace(filename.begin(), filename.end(), '_', ' ');
     
     return filename;
 }
 
 bool SessionFileParser::validate_track_format(const std::string& line) {
-    // TODO: Students implement format validation
     
     // Basic validation: should start with MP3 or WAV
     if (line.length() < 4) {

@@ -50,7 +50,7 @@ bool DJSession::load_playlist(const std::string& playlist_name)  {
 }
 
 /**
- * TODO: Implement load_track_to_controller method
+ * Loads a track from the library into the controller cache.
  * 
  * REQUIREMENTS:
  * 1. Track Retrieval
@@ -72,7 +72,6 @@ bool DJSession::load_playlist(const std::string& playlist_name)  {
 
  */
 int DJSession::load_track_to_controller(const std::string& track_name) {
-    // Your implementation here
     AudioTrack* track=this->library_service.findTrack(track_name);
     if(!track) {
          std::cout << "[ERROR] Track " << track_name << " not found in library " << std::endl;
@@ -95,14 +94,13 @@ int DJSession::load_track_to_controller(const std::string& track_name) {
 }
 
 /**
- * TODO: Implement load_track_to_mixer_deck method
+ * Moves a track from the controller cache to one of the mixer decks.
  * 
  * @param track_title: Title of track to load to mixer
  * @return: Whether track was successfully loaded to a deck
  */
 bool DJSession::load_track_to_mixer_deck(const std::string& track_title) {
     std::cout << "[System] Delegating track transfer to MixingEngineService for: " << track_title << std::endl;
-    // your implementation here
     AudioTrack* track=this->controller_service.getTrackFromCache(track_title);
     if(!track) {
         std::cout << "[ERROR] Track " << track_title << " not found in cache " << std::endl;
@@ -155,7 +153,6 @@ void DJSession::simulate_dj_performance() {
     std::cout << "\n--- Processing Tracks ---" << std::endl;
 
     
-    // Your implementation here
     if(this->play_all) {
        std::map<std::string,std::vector<int>> playlists=this->session_config.playlists;
        std::vector<std::string> names;

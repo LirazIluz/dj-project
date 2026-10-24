@@ -8,13 +8,12 @@ WAVTrack::WAVTrack(const std::string& title, const std::vector<std::string>& art
     std::cout << "WAVTrack created: " << sample_rate << "Hz/" << bit_depth << "bit" << std::endl;
 }
 
-// ========== TODO: STUDENTS IMPLEMENT THESE VIRTUAL FUNCTIONS ==========
+// ========== VIRTUAL FUNCTIONS ==========
 
 /*
 Method that simulates track loading.
 */
 void WAVTrack::load() {
-    // TODO: Implement realistic WAV loading simulation
     // NOTE: Use exactly 2 spaces before the arrow (→) character
 
     std::cout << "[WAVTrack::load] Loading WAV: \"" << title << "\" at " << 
@@ -37,7 +36,7 @@ void WAVTrack::analyze_beatgrid() {
 }
 
 /*
-Calculates quality score according to instructions.
+Calculates quality score based on sample rate and bit depth.
 */
 double WAVTrack::get_quality_score() const {
     double score = 70.0;

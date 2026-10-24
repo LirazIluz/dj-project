@@ -10,7 +10,7 @@ MP3Track::MP3Track(const std::string& title, const std::vector<std::string>& art
     std::cout << "MP3Track created: " << bitrate << " kbps" << std::endl;
 }
 
-// ========== TODO: STUDENTS IMPLEMENT THESE VIRTUAL FUNCTIONS ==========
+// ========== VIRTUAL FUNCTIONS ==========
 
 /*
 Simulates track loading
@@ -43,7 +43,7 @@ void MP3Track::analyze_beatgrid() {
 }
 
 /*
-Calculates quality score according to instructions
+Calculates quality score based on bitrate.
 */
 double MP3Track::get_quality_score() const {
     

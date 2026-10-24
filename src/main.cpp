@@ -7,34 +7,30 @@
 #include "MP3Track.h"
 #include "WAVTrack.h"
 #include "Playlist.h"
-// Phase 4 orchestrator
 #include "DJSession.h"
 #include "DJLibraryService.h"
 #include "DJControllerService.h"
 #include "MixingEngineService.h"
 #include "PointerWrapper.h"
 /**
- * DJ Track Session Manager - Test Program
- * 
- * This program demonstrates the assignment and tests student implementations.
- * As students complete each phase, more functionality will work correctly.
- * 
- * ⚠️  EXPECT MEMORY LEAKS AND CRASHES INITIALLY! ⚠️
- * Students must fix the issues to make this program run cleanly.
+ * DJ Track Session Manager
+ *
+ * Runs the interactive DJ session, or a set of tests for the
+ * memory management, Rule of 5, smart pointer and polymorphism parts.
  */
 
-bool del = false; // hint: what is the purpose of this variable? how it changes the ownership semantics?
+bool del = false;
 void test_phase_1_memory_leaks() {
     
-    std::cout << "\n======== PHASE 1: MEMORY LEAK TESTING ========" << std::endl;
-    std::cout << "Testing the broken Playlist class..." << std::endl;
+    std::cout << "\n======== MEMORY LEAK TESTING ========" << std::endl;
+    std::cout << "Testing the Playlist class..." << std::endl;
 
-    // Create some tracks (these will leak if AudioTrack Rule of 5 isn't implemented)
+    // Create some tracks
     std::cout << "Creating tracks..." << std::endl;
     AudioTrack* mp3 = new MP3Track("Sunset Lover", {"Petit Biscuit"}, 180, 120, 320);
     AudioTrack* wav = new WAVTrack("Strobe", {"Deadmau5"}, 645, 128, 44100, 16);
 
-    // Create playlist and add tracks (this will leak nodes if destructor is broken)
+    // Create playlist and add tracks
     std::cout << "Creating playlist..." << std::endl;
     Playlist* my_playlist = new Playlist("Chill House Mix");
 
@@ -42,7 +38,7 @@ void test_phase_1_memory_leaks() {
     my_playlist->add_track(wav);
     my_playlist->display();
 
-    // Remove a track (this will leak if remove_track is broken)
+    // Remove a track
     std::cout << "Removing track..." << std::endl;
     my_playlist->remove_track("Strobe");
     my_playlist->display();
@@ -54,11 +50,11 @@ void test_phase_1_memory_leaks() {
         delete wav;          // Should clean up AudioTrack data
     }
 
-    std::cout << "Phase 1 test complete. Check for memory leaks!\n" << std::endl;
+    std::cout << "Memory leak test complete.\n" << std::endl;
 }
 
 void test_phase_2_rule_of_5() {
-    std::cout << "\n======== PHASE 2: RULE OF 5 TESTING ========" << std::endl;
+    std::cout << "\n======== RULE OF 5 TESTING ========" << std::endl;
     std::cout << "Testing AudioTrack copy and move operations..." << std::endl;
 
     try {
@@ -83,7 +79,7 @@ void test_phase_2_rule_of_5() {
 
         std::cout << "Moved: " << moved.get_title() << std::endl;
 
-        std::cout << "Phase 2 test complete!\n" << std::endl;
+        std::cout << "Rule of 5 test complete!\n" << std::endl;
 
     } catch (const std::exception& e) {
         std::cout << "❌ Exception caught: " << e.what() << std::endl;
@@ -92,7 +88,7 @@ void test_phase_2_rule_of_5() {
 }
 
 void test_phase_3() {
-    std::cout << "\n======== PHASE 3: SMART POINTER TESTING ========" << std::endl;
+    std::cout << "\n======== SMART POINTER TESTING ========" << std::endl;
     std::cout << "Testing DJUniquePtr implementation..." << std::endl;
 
     try {
@@ -100,7 +96,7 @@ void test_phase_3() {
         std::cout << "Testing DJUniquePtr construction..." << std::endl;
         PointerWrapper<MP3Track> smart_track(new MP3Track("Smart Track", {"AI Artist"}, 240, 130, 320));
 
-        // Test access operators (will be TODO messages initially)
+        // Test access operators
         std::cout << "\nTesting access operators..." << std::endl;
         if (smart_track) {
             std::cout << "Smart pointer contains: " << smart_track->get_title() << std::endl;
@@ -125,7 +121,7 @@ void test_phase_3() {
         // Manual cleanup since we released
         delete raw_ptr;
 
-        std::cout << "Phase 3 test complete!\n" << std::endl;
+        std::cout << "Smart pointer test complete!\n" << std::endl;
 
     } catch (const std::exception& e) {
         std::cout << "❌ Exception caught: " << e.what() << std::endl;
@@ -182,11 +178,8 @@ int main(int argc, char* argv[]) {
         std::cout << "==================================================" << std::endl;
         std::cout << "    DJ TRACK SESSION MANAGER - TEST PROGRAM" << std::endl;
         std::cout << "==================================================" << std::endl;
-        std::cout << "This program tests all phases of the assignment." << std::endl;
-        std::cout << "Initially, many features will be incomplete!" << std::endl;
         std::cout << "==================================================" << std::endl;
         
-        // Test each phase individually
         test_phase_1_memory_leaks();
         test_phase_2_rule_of_5();
         test_phase_3();

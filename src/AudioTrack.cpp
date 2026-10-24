@@ -28,7 +28,7 @@ AudioTrack::AudioTrack(const std::string& title, const std::vector<std::string>&
     #endif
 }
 
-// ========== TODO: STUDENTS IMPLEMENT RULE OF 5 ==========
+// ========== RULE OF 5 ==========
 
 /*
 Destructor for an audio track object.
@@ -46,12 +46,11 @@ Copy constructor for an audio track.
 */
 AudioTrack::AudioTrack(const AudioTrack& other)
 {
-    // TODO: Implement the copy constructor
     #ifdef DEBUG
     std::cout << "AudioTrack copy constructor called for: " << other.title << std::endl;
     #endif
 
-    this->copyfrom(other); //helper methods that copy premitive fields.
+    this->copyfrom(other); //helper methods that copy primitive fields.
    
     this->waveform_data=new double[other.waveform_size]; //allocates data array for the copy
 
@@ -61,7 +60,7 @@ AudioTrack::AudioTrack(const AudioTrack& other)
 }
 
 /*
-Helper method that copies other premitive fields.
+Helper method that copies other primitive fields.
 */
 void AudioTrack::copyfrom(const AudioTrack& other){
 
@@ -74,7 +73,7 @@ void AudioTrack::copyfrom(const AudioTrack& other){
 }
 
 /*
-Operator= implemintation for the audio track class.
+Operator= implementation for the audio track class.
 */
 AudioTrack& AudioTrack::operator=(const AudioTrack& other) {
     
@@ -89,7 +88,7 @@ AudioTrack& AudioTrack::operator=(const AudioTrack& other) {
 
         this->waveform_data=new double[other.waveform_size];
 
-        for(int i=0;i<other.waveform_size;i++) { //preform the deep copy
+        for(int i=0;i<other.waveform_size;i++) { //perform the deep copy
             this->waveform_data[i]=other.waveform_data[i];
         }
     }
@@ -106,7 +105,7 @@ AudioTrack::AudioTrack(AudioTrack&& other) noexcept {
     #endif
 
     this->copyfrom(other);
-    this->waveform_data=other.waveform_data; //just coppies other's data array, as he is going to be deleted
+    this->waveform_data=other.waveform_data; //takes ownership of other's data array
     other.waveform_data=nullptr;//avoids other's data deletion.
 }
 

@@ -6,11 +6,9 @@ Playlist::Playlist(const std::string& name)
     : head(nullptr), playlist_name(name), track_count(0) {
     std::cout << "Created playlist: " << name << std::endl;
 }
-// TODO: Fix memory leaks!
-// Students must fix this in Phase 1
 
 /*
-Destructor for phase 1 - deallocates a playlist object.
+Destructor - deallocates all nodes and tracks of the playlist.
 */
 Playlist::~Playlist() {
     
@@ -38,7 +36,7 @@ void Playlist::Clear()
 Method that handles tracks adding to a playlist object.
 */
 void Playlist::add_track(AudioTrack* track) {
-    if (!track) { // null track, using bool operator of phase 3.
+    if (!track) { // null track, using the bool operator of PointerWrapper.
         std::cout << "[Error] Cannot add null track to playlist" << std::endl;
         return;
     }

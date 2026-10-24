@@ -15,7 +15,7 @@ AudioTrack* LRUCache::get(const std::string& track_id) {
 }
 
 /**
- * Method that handles putting a track to cahce memory.
+ * Method that handles putting a track to cache memory.
  */
 bool LRUCache::put(PointerWrapper<AudioTrack> track) {
     if(!track) { //track validity check
@@ -31,11 +31,11 @@ bool LRUCache::put(PointerWrapper<AudioTrack> track) {
     this->access_counter++; //increase access counter, as a slot is about to be accessed.
     if(this->isFull()) //all slots are taken
     {
-        if(this->evictLRU()) // eveacts the LRU slot
+        if(this->evictLRU()) // evicts the LRU slot
         {
             size_t index = this->findEmptySlot();
             
-            slots[index].store(std::move(track),this->access_counter); // adding a track to an free solts
+            slots[index].store(std::move(track),this->access_counter); // adding a track to an free slots
             return true; //eviction occured
         }
     }

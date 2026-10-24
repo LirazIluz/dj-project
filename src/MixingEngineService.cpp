@@ -14,7 +14,7 @@
 MixingEngineService::MixingEngineService()
      : decks(), active_deck(1), auto_sync(false), bpm_tolerance(0)
 {
-    this->decks[FIRST_DECK]= nullptr; // sets bouth decks to nullptr as the inital state.
+    this->decks[FIRST_DECK]= nullptr; // sets both decks to nullptr as the inital state.
     this->decks[SECOND_DECK]= nullptr; 
     std::cout << "[MixingEngineService] Initialized with 2 empty decks."<< std:: endl;
 }
@@ -39,7 +39,7 @@ MixingEngineService::~MixingEngineService() {
 
 
 /**
- * TODO: Implement loadTrackToDeck method
+ * Loads a copy of the track to the inactive deck and makes it the active deck.
  * @param track: Reference to the track to be loaded
  * @return: Index of the deck where track was loaded, or -1 on failure
  */
@@ -85,13 +85,6 @@ int MixingEngineService::loadTrackToDeck(const AudioTrack& track) {
     this->decks[target] = copy.release();
 
     std::cout << "[Load Complete] \'"<< track.get_title() <<"\' is now loaded on deck " << target << std::endl;
-
-    /*if(activeSong) //unloading handling
-    {
-        std::cout << "[Unload] Unloading previous deck "<< this->active_deck <<"(<" <<activeSong->get_title() << ">) " << std::endl;
-        delete activeSong;
-        this->decks[this->active_deck] = nullptr;
-    }*/
 
     this->active_deck = target;
     std::cout << "[Active Deck] Switched to deck " << target << std::endl;
